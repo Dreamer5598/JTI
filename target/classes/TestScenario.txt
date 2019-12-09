@@ -1,0 +1,206 @@
+IB-3_WEB_TC01_ "new Profile password change" first step can be opened from email
+
+*GIVEN* a client received a email for change password
+*AND* email contains "Temp. Password"
+*AND* email contains "Reset password" link
+*WHEN* user clicks on "Reset password" link
+*THEN* User is redirected to first step of "Profile password change" flow
+
+IB-3_WEB_TC02_ "new Profile password change" fisrt step page is displayed as per design
+
+*GIVEN* new MP User received email about new created profile
+*WHEN* User navigates to Link of changeting password
+*THEN* First step of "new Profile password change" flow is displayed as per design
+Design Link: https://xd.adobe.com/spec/f7e72536-dfdd-47fe-7db4-242ea513fa70-81d6/screen/da24431b-d30e-46d3-b96a-76f97909bc40/10e-Gestione-profili-reg02
+#screenshoot#
+
+IB-3_WEB_TC03_ "new Profile password change" first step multilanguage
+
+*GIVEN* new MP User received email about new created profile
+*WHEN* User navigates to Link of changeting password
+*THEN* First step of "new Profile password change" flow labels are displayed as per selected language
+#screenshoot#
+|IT|EN|
+|Password temporanea*| Temporary Password|
+|Inserisci Password temporanea | Insert temporarry password|
+|Inserisci la password temporanea che ti abbiamo inviato per email e poi quella nuova che desideri creare|?|
+|Nuova password*| new password|
+|Inserisci nuova password| insert new password|
+|La password deve essere composta da almeno 8 caratteri alfanumerici, almeno un numero, almeno un carattere maiuscolo e almeno un carattere speciale.|?|
+|Conferma password*|Confirm password|
+|Conferma nuova password|Confirm new Password|
+|Conferma la password che hai scelto |?|
+|*Campo obbligatorio| *Mandatory Fields|
+|ANNULLA| Cancel|
+|CONFERMA| Confirm|
+
+IB-3_WEB_TC04_ "new Profile password change" pass first step and receive OTP
+
+*GIVEN* new MP User is on fist step of change password
+*WHEN* User fills all fields with correct data
+*THEN* User is brought to second step of change password flow
+*AND* a OTP email is sent to user that is now performing the flow
+
+IB-3_WEB_TC05_ "new Profile password change" 1st time validation
+
+*GIVEN* new MP User is on fist step of change password
+*WHEN* User fills [temporarry password] field with incorrect data
+ADN inserts a valid [new password] and valid [confirm new password]
+*THEN* a error message is displayed: "La password temporanea non è valida/The temporary password is invalid"
+*AND* [temporarry password] field is highlighted in red
+
+IB-3_WEB_TC06_ "new Profile password change" error message for subsequent failures
+
+*GIVEN* new MP User is on fist step of change password
+*WHEN* User fills [temporarry password] field with incorrect data second time
+ADN inserts a valid [new password] and valid [confirm new password]
+*THEN* a error message is displayed: "I dati che hai inserito non sono validi, prova di nuovo./The data you entered is not valid, try again."
+*AND* [temporarry password] field is highlighted in red
+
+IB-3_WEB_TC07_ "new Profile password change" validation of inexisting USERNAME
+
+*GIVEN* new MP User is on fist step of change password
+*AND* URL Contains an invalid Username as a parameter
+*WHEN* User fills [temporarry password] field with correct data
+*AND* inserts a valid [new password] and valid [confirm new password]
+*THEN* a error message is displayed: "I dati che hai inserito non sono validi, prova di nuovo./The data you entered is not valid, try again."
+*AND* [temporarry password] field is highlighted in red
+
+IB-3_WEB_TC08_ "new Profile password change" new password fields general validation
+
+*GIVEN* new MP User is on fist step of change password
+*WHEN* User fills [temporarry password] field with correct data
+*AND* inserts <data> in following fields: [new password] and  [confirm new password]
+*THEN* a <error message> is displayed
+*AND* both password field are highlighted in red
+|Data											|Error Message											|
+|inserts different valid password in both fields|Le password non coincidono/The passwords do not match	|
+|insert a field with invalid password (> 8 chars, >=1 number, >=1 special char, >=1 Upper case char)| La password non rispetta i requisiti richiesti/The password does not meet requirements|
+
+IB-3_WEB_TC09_ "new Profile password change" user is blocked after 5 attemps of inserting incorrect credentials
+
+*GIVEN* new MP User is on fist step of change password
+*WHEN* User fills form fields with correct data 5 times
+*THEN* user that is performing the flow is blocked for 3h
+*AND* a <error message> is displayed
+*AND* first field is highlighted in red
+<error message>: Le credenziali inserite non sono corrette. L’utenza è stata bloccata. / The provided credentials are incorrect. The user has been blocked.
+
+IB-3_WEB_TC10_ "new Profile password change" [Cancel] button will navigate to Loggin Page
+
+*GIVEN* new MP User is on fist step of change password
+*WHEN* User clicks on [Cancel] btn
+*THEN* user is brought to loggin page
+*AND* all data is lost
+
+IB-3_WEB_TC11_ "new Profile password change" OTP email is as per specifications
+
+*GIVEN* new MP User is on fist step of change password
+*WHEN* User fills all form fields with correct and valid data
+*AND* User clicks on [Continue] btn
+*THEN* user is brought to next step of change password flow
+*AND* an email is sent to new user mail box with following <content>
+<content>:
+"
+Gentile cliente
+per completare la registrazione all'area ospiti inserisci il codice [OTP] nel campo Codice.
+Nella sezione Parla con noi del sito potrai contattarci per ulteriori informazioni.
+Intesa Sanpaolo
+Questo messaggio è stato inviato da un indirizzo email di sola notifica ti preghiamo di non rispondere.
+"
+
+IB-3_WEB_TC12_ "new Profile password change" second step is as per design
+
+*GIVEN* new MP User Passed first step of change password flow
+*WHEN* User navigates to second step of change password flow
+*THEN* Page is displayed as per design
+Design Link:https://xd.adobe.com/spec/f7e72536-dfdd-47fe-7db4-242ea513fa70-81d6/screen/39b751e0-653b-40f2-87dd-d8bacbc2d585/10e-Gestione-profili-reg05
+#screenshoot#
+
+IB-3_WEB_TC13_ "new Profile password change" second step multilanguage
+
+*GIVEN* new MP User Passed first step of change password flow
+*WHEN* User navigates to second step of change password flow
+*THEN* Page labels are displayed as per selected language
+#screenshoot#
+|IT|EN|
+|Verifica mail|?|
+|Per completare la registrazione inserisci il codice che ti abbiamo mandato sull’email emiliano.casetti@intesa.it|?|
+|Codice*|Code*|
+|Non l’hai ricevuto? RICHIEDI CODICE|?|
+|*Campo obbligatorio|Mandatory fields|
+|INDIETRO| BACK|
+|CONTINUA| Continue|
+
+IB-3_WEB_TC14_ "new Profile password change" valdation of incorrect OTP
+
+*GIVEN* new MP user is on second step of change password flow
+*WHEN* User inserts an invalid OTP in "Code" field
+*THEN* an <error message> is displayed
+*AND* "Code" field is highlighted in red
+<error message>: Il codice che hai inserito non è valido./The code you entered is not valid.
+
+IB-3_WEB_TC15_ "new Profile password change" block user after 5 attemps of incorrect OTP
+
+*GIVEN* new MP user is on second step of change password flow
+*WHEN* User inserts an invalid OTP in "Code" field for 5 times
+*THEN* user is blocked for a limited time (3h)
+*AND* an <error message> is displayed
+*AND* "Code" field is highlighted in red
+<error message>: Il codice che hai inserito non è valido. L'utente è stato bloccato./The code you entered is not valid. The user has been blocked.
+
+IB-3_WEB_TC16_ "new Profile password change" [RESEND CODE] button will resend the EMAIL that contains OTP
+
+*GIVEN* new MP user is on second step of change password flow
+*WHEN* User clicks on "RESEND CODE" button
+*THEN* an email is  sent to user's mailBox
+*AND* email contains a new OTP for second step of change password flow
+
+IB-3_WEB_TC17_ "new Profile password change" Old OTP will not be valid after resend
+
+*GIVEN* new MP user is on second step of change password flow
+*AND* User clicks on "RESEND CODE" button
+*WHEN* user inserts Old OTP in "Code" field
+*THEN*  an <error message> is displayed
+*AND* "Code" field is highlighted in red
+<error message>: Il codice che hai inserito non è valido./The code you entered is not valid.
+
+IB-3_WEB_TC18_ "new Profile password change" third step is displayed as per design
+
+*GIVEN* new MP User Passed second step of change password flow
+*WHEN* User is brought to third step of change password flow
+*THEN* third step of change password flow is displayed as per design
+Design Link: https://xd.adobe.com/spec/f7e72536-dfdd-47fe-7db4-242ea513fa70-81d6/screen/f7115096-c956-4bd0-9014-6d081ebef8e1/10e-Gestione-profili-reg06
+#screenshoot#
+
+IB-3_WEB_TC19_ "new Profile password change" third step multilanguage
+
+*GIVEN* new MP User Passed second step of change password flow
+*WHEN* User is brought to third step of change password flow
+*THEN* Page labels are displayed as per selected language
+#screenshoot#
+|IT|EN|
+|Registrazione confermata| Confirm Registration|
+|Puoi accedere alla tua area riservata in qualsiasi momento con la tua email.|?|
+|CONTINUA| CONTINUE|
+
+IB-3_WEB_TC20_ "new Profile password change" third step [CONTINUE] button will redirect User to Loggin page
+
+*GIVEN* MP User is on Third step of change password flow
+*WHEN* User clicks on [CONTINUE] button
+*THEN* User is brought to loggin page
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
