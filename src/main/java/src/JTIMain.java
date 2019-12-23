@@ -87,7 +87,7 @@ public class JTIMain {
             .url("https://icbpijira.atlassian.net/rest/api/latest/issue/")
             .post(body)
             .addHeader("Content-Type", "application/json")
-            .addHeader("Authorization", "Basic YW5kcmVpLmRvYnJvdkBlbmRhdmEuY29tOlpLeWJJN0hEV2JGaGExeVpsbVpKMTA2QQ==")
+            .addHeader("Authorization", "")
             .addHeader("User-Agent", "PostmanRuntime/7.13.0")
             .addHeader("Accept", "*/*")
             .addHeader("Cache-Control", "no-cache")
